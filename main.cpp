@@ -1,48 +1,48 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include "Graph.h"
+#include <iostream> // подключаем библиотеку для ввода и вывода
+#include <vector> // подключаем библиотеку для работы с векторами
+#include <string> // подключаем библиотеку для работы со строками
+#include "Graph.h" // подключаем собственный заголовочный файл Graph.h
 
-using namespace std;
+using namespace std; // подключаем стандартное пространство имён
 
-void printVector(const vector<string>& data) {
-    if (data.empty()) {
-        cout << "Результат отсутствует";
-    } else {
-        for (const string& item : data) {
-            cout << item << " ";
-        }
-    }
+void printVector(const vector<string>& data) { // создаём функцию для вывода вектора строк
+    if (data.empty()) { // проверяем, пустой ли вектор
+        cout << "Результат отсутствует"; // выводим сообщение, если данных нет
+    } else { // если вектор не пустой
+        for (const string& item : data) { // перебираем все элементы вектора
+            cout << item << " "; // выводим текущий элемент
+        } // завершаем цикл
+    } // завершаем условие
 
-    cout << endl;
-}
+    cout << endl; // переходим на новую строку
+} // завершаем функцию printVector
 
-int main() {
-    setlocale(LC_ALL, "Russian");
+int main() { // главная функция программы
+    setlocale(LC_ALL, "Russian"); // устанавливаем русскую локаль для вывода русского текста
 
-    Graph graph;
+    Graph graph; // создаём объект graph класса Graph
 
-    graph.addEdge("A", "B");
-    graph.addEdge("A", "C");
-    graph.addEdge("B", "D");
-    graph.addEdge("C", "E");
-    graph.addEdge("D", "E");
+    graph.addEdge("A", "B"); // добавляем ребро между вершинами A и B
+    graph.addEdge("A", "C"); // добавляем ребро между вершинами A и C
+    graph.addEdge("B", "D"); // добавляем ребро между вершинами B и D
+    graph.addEdge("C", "E"); // добавляем ребро между вершинами C и E
+    graph.addEdge("D", "E"); // добавляем ребро между вершинами D и E
 
-    graph.printGraph();
+    graph.printGraph(); // выводим граф в виде списка смежности
 
-    cout << endl;
+    cout << endl; // выводим пустую строку для отделения результата
 
-    cout << "Обход BFS от вершины A: ";
-    printVector(graph.bfs("A"));
+    cout << "Обход BFS от вершины A: "; // выводим подпись для обхода BFS
+    printVector(graph.bfs("A")); // выполняем BFS от вершины A и выводим результат
 
-    cout << "Обход DFS от вершины A: ";
-    printVector(graph.dfs("A"));
+    cout << "Обход DFS от вершины A: "; // выводим подпись для обхода DFS
+    printVector(graph.dfs("A")); // выполняем DFS от вершины A и выводим результат
 
-    cout << "Путь от A до E: ";
-    printVector(graph.findPath("A", "E"));
+    cout << "Путь от A до E: "; // выводим подпись для поиска пути от A до E
+    printVector(graph.findPath("A", "E")); // ищем путь от A до E и выводим результат
 
-    cout << "Путь от A до F: ";
-    printVector(graph.findPath("A", "F"));
+    cout << "Путь от A до F: "; // выводим подпись для поиска пути от A до F
+    printVector(graph.findPath("A", "F")); // пытаемся найти путь до несуществующей вершины F
 
-    return 0;
-}
+    return 0; // завершаем программу
+} // завершаем функцию main
